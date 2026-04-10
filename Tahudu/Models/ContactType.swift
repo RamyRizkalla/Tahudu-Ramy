@@ -1,12 +1,7 @@
-//
-//  ContactType.swift
-//  Tahudu
-//
-
 import SwiftUI
 
 /// Represents the various contact types
-enum ContactType {
+enum ContactType: String, Codable, CaseIterable, Hashable {
     case phone
     case email
     case whatsApp

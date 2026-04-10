@@ -9,7 +9,7 @@ struct ContactButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
 
     let type: ContactType
-    let cornerRadius: CGFloat = 4
+    let cornerRadius: CGFloat = 8
     let size: CGFloat = 36
 
     func makeBody(configuration: Configuration) -> some View {

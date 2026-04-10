@@ -1,0 +1,137 @@
+{
+  "listings": [
+    {
+      "id": "prop_001",
+      "type": "Apartment",
+      "deliveryYear": 2022,
+      "price": 2575000,
+      "currency": "AED",
+      "priceInclusive": true,
+      "location": "Laguna Tower, Lake Almas West, Jumeirah Lake Tower",
+      "bedrooms": null,
+      "bathrooms": 1,
+      "areaSqft": 1356,
+      "publishedAt": "2024-11-28T00:00:00Z",
+      "lastContactedAt": "2021-07-28T00:00:00Z",
+      "tags": [
+        "verified",
+        "new_construction",
+        "live_viewing"
+      ],
+      "images": [
+        "first_image",
+        "second_image"
+      ],
+      "contactOptions": [
+        "phone",
+        "email",
+        "whatsapp"
+      ]
+    },
+    {
+      "id": "prop_002",
+      "type": "Apartment",
+      "deliveryYear": 2023,
+      "price": 1850000,
+      "currency": "AED",
+      "priceInclusive": false,
+      "location": "Marina Heights, Dubai Marina",
+      "bedrooms": 1,
+      "bathrooms": 2,
+      "areaSqft": 980,
+      "publishedAt": "2024-11-30T00:00:00Z",
+      "lastContactedAt": null,
+      "tags": [
+        "verified"
+      ],
+      "images": [
+        "first_image",
+        "second_image"
+      ],
+      "contactOptions": [
+        "phone",
+        "whatsapp"
+      ]
+    },
+    {
+      "id": "prop_003",
+      "type": "Apartment",
+      "deliveryYear": 2021,
+      "price": 1450000,
+      "currency": "AED",
+      "priceInclusive": true,
+      "location": "Silverene Tower, Dubai Marina",
+      "bedrooms": 1,
+      "bathrooms": 2,
+      "areaSqft": 820,
+      "publishedAt": "2024-10-05T00:00:00Z",
+      "lastContactedAt": "2023-12-12T00:00:00Z",
+      "tags": [
+        "verified",
+        "furnished"
+      ],
+      "images": [
+        "first_image",
+        "second_image"
+      ],
+      "contactOptions": [
+        "phone",
+        "email"
+      ]
+    },
+    {
+      "id": "prop_004",
+      "type": "Apartment",
+      "deliveryYear": 2019,
+      "price": 975000,
+      "currency": "AED",
+      "priceInclusive": false,
+      "location": "The Torch, Dubai Marina",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areaSqft": 690,
+      "publishedAt": "2024-11-12T00:00:00Z",
+      "lastContactedAt": null,
+      "tags": [
+        "verified",
+        "price_reduced"
+      ],
+      "images": [
+        "first_image",
+        "second_image"
+      ],
+      "contactOptions": [
+        "phone",
+        "whatsapp"
+      ]
+    },
+    {
+      "id": "prop_005",
+      "type": "Apartment",
+      "deliveryYear": 2024,
+      "price": 2650000,
+      "currency": "AED",
+      "priceInclusive": true,
+      "location": "Address Jumeirah Beach Residence, JBR",
+      "bedrooms": 2,
+      "bathrooms": 3,
+      "areaSqft": 1450,
+      "publishedAt": "2024-12-01T00:00:00Z",
+      "lastContactedAt": "2024-12-02T00:00:00Z",
+      "tags": [
+        "verified",
+        "new_construction",
+        "sea_view"
+      ],
+      "images": [
+        "first_image",
+        "second_image"
+      ],
+      "contactOptions": [
+        "phone",
+        "email",
+        "whatsapp"
+      ]
+    }
+  ]
+}
