@@ -46,6 +46,10 @@
 		2D348A3F2F8AAA6700ADA472 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D348A3E2F8AAA6700ADA472 /* DateExt.swift */; };
 		2D348A432F8AAD5900ADA472 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2D348A422F8AAD5900ADA472 /* Localizable.xcstrings */; };
 		2D8681012F8BCB5D0068E2B5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8680FD2F8BCB5D0068E2B5 /* ToastView.swift */; };
+		2D8681032F8BDF1D0068E2B5 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681022F8BDF1D0068E2B5 /* SettingsItem.swift */; };
+		2D8681062F8BDF350068E2B5 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681042F8BDF350068E2B5 /* SettingsCell.swift */; };
+		2D8681082F8BE3900068E2B5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681072F8BE3900068E2B5 /* SettingsViewModel.swift */; };
+		2D86810A2F8BE4A80068E2B5 /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681092F8BE4A80068E2B5 /* UITableViewExt.swift */; };
 		2DFCB70E2F8AD02900B78EA1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFCB70D2F8AD02900B78EA1 /* TagView.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +106,10 @@
 		2D348A3E2F8AAA6700ADA472 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		2D348A422F8AAD5900ADA472 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2D8680FD2F8BCB5D0068E2B5 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		2D8681022F8BDF1D0068E2B5 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
+		2D8681042F8BDF350068E2B5 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		2D8681072F8BE3900068E2B5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		2D8681092F8BE4A80068E2B5 /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
 		2DFCB70D2F8AD02900B78EA1 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +189,7 @@
 		1F479BCF26EF17EC00F863AC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2D8681092F8BE4A80068E2B5 /* UITableViewExt.swift */,
 				2D348A3E2F8AAA6700ADA472 /* DateExt.swift */,
 				2D348A0A2F89B67900ADA472 /* FontExt.swift */,
 				1F566C05272963EE000D4E93 /* Image.swift */,
@@ -240,6 +249,8 @@
 		1F479BDB26EF1AB900F863AC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				2D8681072F8BE3900068E2B5 /* SettingsViewModel.swift */,
+				2D8681052F8BDF350068E2B5 /* Cells */,
 				1F479BDE26EF1AE600F863AC /* SettingsView.swift */,
 				1F479BED26F06FDD00F863AC /* SettingsViewController.swift */,
 			);
@@ -258,6 +269,7 @@
 		1F566C0627296406000D4E93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2D8681022F8BDF1D0068E2B5 /* SettingsItem.swift */,
 				2D348A3C2F8AAA4100ADA472 /* PropertyTag.swift */,
 				2D348A1F2F8A7C3500ADA472 /* APIModels */,
 				2D348A022F89B2D700ADA472 /* Property.swift */,
@@ -345,6 +357,14 @@
 				2D8680FD2F8BCB5D0068E2B5 /* ToastView.swift */,
 			);
 			path = Toast;
+			sourceTree = "<group>";
+		};
+		2D8681052F8BDF350068E2B5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2D8681042F8BDF350068E2B5 /* SettingsCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		2DFCB70C2F8AD00700B78EA1 /* Tags */ = {
@@ -462,6 +482,8 @@
 				1F479BDD26EF1AD400F863AC /* SearchView.swift in Sources */,
 				2D348A322F8A9E5400ADA472 /* PropertyRepository.swift in Sources */,
 				1F479BD726EF1A0200F863AC /* Colors.swift in Sources */,
+				2D8681062F8BDF350068E2B5 /* SettingsCell.swift in Sources */,
+				2D8681082F8BE3900068E2B5 /* SettingsViewModel.swift in Sources */,
 				2D348A032F89B2D700ADA472 /* Property.swift in Sources */,
 				2D348A072F89B2F200ADA472 /* TagsView.swift in Sources */,
 				2D348A082F89B2F200ADA472 /* CardView.swift in Sources */,
@@ -475,6 +497,7 @@
 				2D348A3D2F8AAA4100ADA472 /* PropertyTag.swift in Sources */,
 				2D348A0F2F89BC9500ADA472 /* SFSymbol.swift in Sources */,
 				1F479BA626EF162000F863AC /* TahuduApp.swift in Sources */,
+				2D8681032F8BDF1D0068E2B5 /* SettingsItem.swift in Sources */,
 				1F566C08272964C6000D4E93 /* ContactType.swift in Sources */,
 				2DFCB70E2F8AD02900B78EA1 /* TagView.swift in Sources */,
 				2D348A0D2F89BC7600ADA472 /* FavoriteButton.swift in Sources */,
@@ -486,6 +509,7 @@
 				2D348A252F8A7F1400ADA472 /* APIProvider.swift in Sources */,
 				2D348A282F8A84FC00ADA472 /* APIToDomainConverter.swift in Sources */,
 				2D348A1A2F8A675C00ADA472 /* APIError.swift in Sources */,
+				2D86810A2F8BE4A80068E2B5 /* UITableViewExt.swift in Sources */,
 				2D348A1B2F8A675C00ADA472 /* PropertyAPI.swift in Sources */,
 				2D348A1C2F8A675C00ADA472 /* Endpoint.swift in Sources */,
 				2D348A212F8A7CD400ADA472 /* SearchViewModel.swift in Sources */,

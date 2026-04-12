@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 public enum SFSymbol: String {
   case heart = "heart"
@@ -22,5 +23,11 @@ public enum SFSymbol: String {
 public extension Image {
   init(sfSymbol: SFSymbol) {
     self.init(systemName: sfSymbol.rawValue)
+  }
+}
+
+public extension UIImage {
+  convenience init?(sfSymbol: SFSymbol, withConfiguration configuration: Configuration) {
+    self.init(systemName: sfSymbol.rawValue, withConfiguration: configuration)
   }
 }

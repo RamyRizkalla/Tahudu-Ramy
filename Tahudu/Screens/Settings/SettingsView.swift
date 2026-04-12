@@ -6,16 +6,15 @@
 import SwiftUI
 
 struct SettingsView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UINavigationController {
-        let settingsViewController = SettingsViewController.init(style: .insetGrouped)
-        settingsViewController.title = "My Account"
-
-        let navigatoinController = UINavigationController(rootViewController: settingsViewController)
-        navigatoinController.navigationBar.prefersLargeTitles = true
-        return navigatoinController
-    }
-
-    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // Nothing here
-    }
+  func makeUIViewController(context: Context) -> UINavigationController {
+    let settingsViewModel = SettingsViewModel(screenTitle: "My Account")
+    let settingsViewController = SettingsViewController(style: .insetGrouped, viewModel: settingsViewModel)
+    
+    let navigatoinController = UINavigationController(rootViewController: settingsViewController)
+    return navigatoinController
+  }
+  
+  func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+    // Nothing here
+  }
 }
