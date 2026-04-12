@@ -34,7 +34,7 @@ class SettingsViewController: UITableViewController {
                 cell.backgroundColor = .systemBackground
                 cell.selectionStyle = .default
                 cell.accessoryType = .disclosureIndicator
-                cell.imageView?.image = UIImage(systemName: "textformat")
+                cell.imageView?.image = UIImage(systemName: SFSymbol.textformat.rawValue)
                 cell.textLabel?.text = "Language"
                 cell.textLabel?.textColor = .label
                 cell.textLabel?.textAlignment = .natural
@@ -47,7 +47,7 @@ class SettingsViewController: UITableViewController {
                 cell.backgroundColor = .systemBackground
                 cell.selectionStyle = .default
                 cell.accessoryType = .disclosureIndicator
-                cell.imageView?.image = UIImage(systemName: "globe")
+                cell.imageView?.image = UIImage(systemName: SFSymbol.globe.rawValue)
                 cell.textLabel?.text = "Country"
                 cell.textLabel?.textColor = .label
                 cell.textLabel?.textAlignment = .natural
@@ -60,7 +60,7 @@ class SettingsViewController: UITableViewController {
                 cell.backgroundColor = .systemBackground
                 cell.selectionStyle = .default
                 cell.accessoryType = .disclosureIndicator
-                cell.imageView?.image = UIImage(systemName: "app.badge")
+                cell.imageView?.image = UIImage(systemName: SFSymbol.appBadge.rawValue)
                 cell.textLabel?.text = "Notifications"
                 cell.textLabel?.textColor = .label
                 cell.textLabel?.textAlignment = .natural
@@ -73,7 +73,7 @@ class SettingsViewController: UITableViewController {
                 cell.backgroundColor = .systemBackground
                 cell.selectionStyle = .default
                 cell.accessoryType = .disclosureIndicator
-                cell.imageView?.image = UIImage(systemName: "info.circle")
+                cell.imageView?.image = UIImage(systemName: SFSymbol.infoCircle.rawValue)
                 cell.textLabel?.text = "About"
                 cell.textLabel?.textColor = .label
                 cell.textLabel?.textAlignment = .natural
@@ -84,7 +84,7 @@ class SettingsViewController: UITableViewController {
                 cell.backgroundColor = .systemBackground
                 cell.selectionStyle = .default
                 cell.accessoryType = .disclosureIndicator
-                cell.imageView?.image = UIImage(systemName: "text.bubble")
+                cell.imageView?.image = UIImage(systemName: SFSymbol.textBubble.rawValue)
                 cell.textLabel?.text = "Feedback"
                 cell.textLabel?.textColor = .label
                 cell.textLabel?.textAlignment = .natural

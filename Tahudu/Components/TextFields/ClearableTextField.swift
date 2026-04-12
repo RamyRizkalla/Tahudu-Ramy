@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ClearableTextFieldStyle: TextFieldStyle {
     @Binding var text: String
-    var symbol: String?
+    var symbol: SFSymbol?
     @Binding var focused: Bool
 
     func _body(configuration: TextField<Self._Label>) -> some View {
@@ -24,7 +24,7 @@ struct ClearableTextField: View {
     @State private var editing = false
 
     let label: String
-    let symbol: String?
+    let symbol: SFSymbol?
     @Binding var text: String
     var onEditingChanged: ((Bool) -> Void)?
 
@@ -37,7 +37,7 @@ struct ClearableTextField: View {
     }
 
     init(label: String,
-         symbol: String? = nil,
+         symbol: SFSymbol? = nil,
          text: Binding<String>,
          onEditingChanged: ((Bool) -> Void)? = nil) {
         self.label = label
@@ -50,19 +50,19 @@ struct ClearableTextField: View {
 struct TextFieldClearButton: ViewModifier {
     @Environment(\.layoutDirection) var direction
     @Binding var text: String
-    var symbol: String?
+    var symbol: SFSymbol?
 
     func body(content: Content) -> some View {
         HStack {
             if let icon = symbol {
-                Image(systemName: icon).foregroundColor(Color(UIColor.lightGray))
+                Image(sfSymbol: icon).foregroundColor(Color(UIColor.lightGray))
             }
             content
             if !text.isEmpty {
                 Button(action: {
                     self.text = ""
                 }, label: {
-                    Image(systemName: direction == .leftToRight ? "delete.left" : "delete.right")
+                    Image(sfSymbol: direction == .leftToRight ? .deleteLeft : .deleteRight)
                         .foregroundColor(.accentColor)
                 })
             }

@@ -1,0 +1,24 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Delivery: %lld" : {
+
+    },
+    "Error: %@" : {
+
+    },
+    "Last contacted: %@" : {
+
+    },
+    "My Account" : {
+
+    },
+    "Published %@" : {
+
+    },
+    "Search" : {
+
+    }
+  },
+  "version" : "1.0"
+}
