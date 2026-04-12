@@ -50,6 +50,7 @@
 		2D8681082F8BE3900068E2B5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681072F8BE3900068E2B5 /* SettingsViewModel.swift */; };
 		2D86810A2F8BE4A80068E2B5 /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681092F8BE4A80068E2B5 /* UITableViewExt.swift */; };
 		2D8681122F8C2ECB0068E2B5 /* EndpointExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681112F8C2ECB0068E2B5 /* EndpointExt.swift */; };
+		2D8681172F8C38C10068E2B5 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681162F8C38C10068E2B5 /* EmptyStateView.swift */; };
 		2DFCB70E2F8AD02900B78EA1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFCB70D2F8AD02900B78EA1 /* TagView.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		2D8681072F8BE3900068E2B5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2D8681092F8BE4A80068E2B5 /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
 		2D8681112F8C2ECB0068E2B5 /* EndpointExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointExt.swift; sourceTree = "<group>"; };
+		2D8681162F8C38C10068E2B5 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		2DFCB70D2F8AD02900B78EA1 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 		1F479BDA26EF1AB100F863AC /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				2D8681162F8C38C10068E2B5 /* EmptyStateView.swift */,
 				2D8681152F8C30510068E2B5 /* Components */,
 				2D348A202F8A7CD400ADA472 /* SearchViewModel.swift */,
 				1F479BDC26EF1AD400F863AC /* SearchView.swift */,
@@ -536,6 +539,7 @@
 			files = (
 				2D348A392F8AA19400ADA472 /* FavouriteProperty.swift in Sources */,
 				1F479BDD26EF1AD400F863AC /* SearchView.swift in Sources */,
+				2D8681172F8C38C10068E2B5 /* EmptyStateView.swift in Sources */,
 				2D348A322F8A9E5400ADA472 /* PropertyRepository.swift in Sources */,
 				1F479BD726EF1A0200F863AC /* Colors.swift in Sources */,
 				2D8681062F8BDF350068E2B5 /* SettingsCell.swift in Sources */,

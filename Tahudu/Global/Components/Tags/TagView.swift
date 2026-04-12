@@ -17,7 +17,7 @@ struct TagView: View {
   }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
   VStack {
     TagView(
       title: "Twin House",

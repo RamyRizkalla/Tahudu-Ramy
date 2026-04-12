@@ -57,6 +57,12 @@ struct SearchView: View {
               .foregroundColor(.red)
           }
           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        } else if viewModel.displayedProperties.isEmpty {
+          EmptyStateView(
+            symbol: viewModel.showFavouritesOnly ? .star : .magnifyingglass,
+            text: viewModel.showFavouritesOnly ? "No favourite properties yet" : "No properties found",
+            subtext: viewModel.showFavouritesOnly ? "Tap the heart icon to add properties to your favourites" : "Try adjusting your search or filters"
+          )
         } else {
           ScrollView {
             LazyVStack(spacing: 0) {
