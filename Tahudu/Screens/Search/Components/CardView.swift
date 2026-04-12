@@ -2,8 +2,8 @@ import SwiftUI
 
 struct CardView: View {
   let property: Property
-  var onFavouriteToggle: () -> Void = {}
-  var onContactTap: () -> Void = {}
+  let onFavouriteToggle: () -> Void
+  let onContactTap: () -> Void
   
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
@@ -24,7 +24,7 @@ struct CardView: View {
         }
       }
       
-      VStack(alignment: .leading, spacing: 12) {
+      VStack(alignment: .leading, spacing: 8) {
         VStack(alignment: .leading, spacing: 4) {
           HStack(spacing: 8) {
             Text(property.type)
@@ -33,7 +33,7 @@ struct CardView: View {
             
             if let year = property.deliveryYear {
               VStack {
-                Text("Delivery: \(year)")
+                Text("Delivery: \(year, format: .number.grouping(.never))")
                   .font(.caption)
                   .fontWeight(.medium)
                   .foregroundColor(.darkBlue)
@@ -45,7 +45,7 @@ struct CardView: View {
             }
           }
           
-          Text(property.price)
+          Text(property.formattedPrice)
             .font(.headline)
             .fontWeight(.semibold)
         }
@@ -75,14 +75,16 @@ struct CardView: View {
           HStack(spacing: 8) {
             ForEach(property.contactTypes, id: \.self) { type in
               ContactButton(type) {
-                print("Tapped contact button")
                 onContactTap()
               }
             }
           }
         }
         .padding(.horizontal, 12)
-        
+        .if(property.lastContactedDate == nil) { view in
+          view.padding(.bottom, 8)
+        }
+
         if let lastContactedDate = property.lastContactedDate {
           HStack(spacing: 6) {
             Image(sfSymbol: .phoneFill)
@@ -107,5 +109,9 @@ struct CardView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-  CardView(property: Property.sampleData[0]) {}
+  CardView(
+    property: Property.sampleData[0],
+    onFavouriteToggle: {},
+    onContactTap: {}
+  )
 }

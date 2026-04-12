@@ -20,6 +20,8 @@ public enum SFSymbol: String {
   case infoCircle = "info.circle"
   case textBubble = "text.bubble"
   case magnifyingglass = "magnifyingglass"
+  case wifiSlash = "wifi.slash"
+  case exclamationmarkCircle = "exclamationmark.circle"
 }
 
 public extension Image {

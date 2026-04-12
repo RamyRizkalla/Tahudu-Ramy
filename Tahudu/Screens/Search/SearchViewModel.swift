@@ -6,6 +6,9 @@ class SearchViewModel: ObservableObject {
     case fetchProperties(query: String)
     case toggleFavourite(property: Property)
     case toggleFavouritesFilter
+    case filterTapped
+    case sortTapped
+    case contactTapped
     case clearError
   }
   
@@ -13,6 +16,8 @@ class SearchViewModel: ObservableObject {
   @Published var isLoading: Bool = false
   @Published var errorMessage: String?
   @Published var showFavouritesOnly: Bool = false
+  @Published var toastMessage: String = ""
+  @Published var showToast: Bool = false
 
   var displayedProperties: [Property] {
     showFavouritesOnly ? properties.filter { $0.isFavorited } : properties
@@ -34,6 +39,12 @@ class SearchViewModel: ObservableObject {
       toggleFavourite(for: property)
     case .toggleFavouritesFilter:
       toggleFavouritesFilter()
+    case .filterTapped:
+      filterTapped()
+    case .sortTapped:
+      sortTapped()
+    case .contactTapped:
+      contactTapped()
     case .clearError:
       errorMessage = nil
     }
@@ -67,5 +78,23 @@ extension SearchViewModel {
 
   private func toggleFavouritesFilter() {
     showFavouritesOnly.toggle()
+  }
+
+  private func filterTapped() {
+    print("Filter tapped")
+    toastMessage = "Filter tapped"
+    showToast = true
+  }
+
+  private func sortTapped() {
+    print("Sort tapped")
+    toastMessage = "Sort tapped"
+    showToast = true
+  }
+
+  private func contactTapped() {
+    print("Contact tapped")
+    toastMessage = "Contact tapped"
+    showToast = true
   }
 }

@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct CarouselView: View {
-  let images: [String]
   @State private var currentPage = 0
+
+  let images: [String]
   
   var body: some View {
     TabView(selection: $currentPage) {
@@ -22,6 +23,6 @@ struct CarouselView: View {
 
 #Preview {
   CarouselView(
-    images: ["FirstImage", "SecondImage", "FirstImage", "SecondImage", "FirstImage", "SecondImage", "FirstImage", "SecondImage", "FirstImage", "SecondImage", "FirstImage", "SecondImage","FirstImage", "SecondImage" ,"FirstImage", "SecondImage" ,"FirstImage", "SecondImage", "FirstImage", "SecondImage", "FirstImage", "SecondImage", "FirstImage", "SecondImage"]
+    images: ["FirstImage", "SecondImage", "FirstImage", "SecondImage"]
   )
 }

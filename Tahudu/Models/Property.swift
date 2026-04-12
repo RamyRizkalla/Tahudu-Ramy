@@ -8,7 +8,8 @@ struct Property: Identifiable, Codable {
   let type: String
   let deliveryYear: Int?
   let tags: [String]
-  let price: String
+  let price: Int
+  let currency: String
   let bedrooms: String
   let publishedDate: Date
   let lastContactedDate: String?
@@ -22,6 +23,10 @@ struct Property: Identifiable, Codable {
     tags.map { PropertyTag(rawValue: $0) }
   }
   
+  var formattedPrice: String {
+    return NumberFormatter.currencyFormatter(for: currency).string(from: NSNumber(value: price)) ?? "\(price)"
+  }
+  
   init(
     id: String,
     images: [String],
@@ -30,7 +35,8 @@ struct Property: Identifiable, Codable {
     type: String,
     deliveryYear: Int? = nil,
     tags: [String],
-    price: String,
+    price: Int,
+    currency: String,
     bedrooms: String,
     publishedDate: Date,
     lastContactedDate: String? = nil,
@@ -44,6 +50,7 @@ struct Property: Identifiable, Codable {
     self.deliveryYear = deliveryYear
     self.tags = tags
     self.price = price
+    self.currency = currency
     self.bedrooms = bedrooms
     self.publishedDate = publishedDate
     self.lastContactedDate = lastContactedDate
@@ -60,7 +67,8 @@ struct Property: Identifiable, Codable {
       type: "Apartment",
       deliveryYear: 2022,
       tags: ["verified"],
-      price: "2,575,000 AED",
+      price: 2575000,
+      currency: "AED",
       bedrooms: "Studio",
       publishedDate: Date(timeIntervalSinceNow: -3 * 86400),
       lastContactedDate: "28 Jul 2021",
@@ -74,7 +82,8 @@ struct Property: Identifiable, Codable {
       type: "Apartment",
       deliveryYear: 2023,
       tags: ["verified", "new_construction"],
-      price: "1,850,000 AED",
+      price: 1850000,
+      currency: "AED",
       bedrooms: "1 Bedroom",
       publishedDate: Date(timeIntervalSinceNow: -5 * 86400),
       lastContactedDate: "15 Aug 2021",
@@ -88,7 +97,8 @@ struct Property: Identifiable, Codable {
       type: "Apartment",
       deliveryYear: 2024,
       tags: ["verified", "live_viewing"],
-      price: "3,200,000 AED",
+      price: 3200000,
+      currency: "AED",
       bedrooms: "2 Bedrooms",
       publishedDate: Date(timeIntervalSinceNow: -86400),
       lastContactedDate: nil,

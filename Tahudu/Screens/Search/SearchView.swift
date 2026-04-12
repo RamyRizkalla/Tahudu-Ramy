@@ -3,43 +3,10 @@ import SwiftUI
 struct SearchView: View {
   @State private var searchText = ""
   @StateObject private var viewModel = SearchViewModel()
-  @State private var showToast = false
-  @State private var toastMessage = ""
   
   var body: some View {
-    ZStack {
+    NavigationStack {
       VStack(spacing: 0) {
-        HStack(spacing: 12) {
-          Button(action: {
-            print("Tapped filter button")
-            toastMessage = "Filter tapped"
-            showToast = true
-          }) {
-            Image(sfSymbol: .sliderHorizontal3)
-              .foregroundColor(.gray)
-          }
-          
-          Button(action: {
-            print("Tapped sort button")
-            toastMessage = "Sort tapped"
-            showToast = true
-          }) {
-            Image(sfSymbol: .arrowUpArrowDown)
-              .foregroundColor(.gray)
-          }
-          
-          Spacer()
-          
-          Button(action: {
-            viewModel.send(.toggleFavouritesFilter)
-          }) {
-            Image(sfSymbol: viewModel.showFavouritesOnly ? .starFill : .star)
-              .foregroundColor(viewModel.showFavouritesOnly ? .yellow : .gray)
-          }
-        }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        
         ClearableTextField(
           label: "City, area or building",
           symbol: .magnifyingglass,
@@ -52,11 +19,11 @@ struct SearchView: View {
           ProgressView()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         } else if let errorMessage = viewModel.errorMessage {
-          VStack {
-            Text("Error: \(errorMessage)")
-              .foregroundColor(.red)
-          }
-          .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+          EmptyStateView(
+            symbol: .exclamationmarkCircle,
+            text: "Something went wrong",
+            subtext: errorMessage
+          )
         } else if viewModel.displayedProperties.isEmpty {
           EmptyStateView(
             symbol: viewModel.showFavouritesOnly ? .star : .magnifyingglass,
@@ -70,13 +37,49 @@ struct SearchView: View {
                 CardView(property: property) {
                   viewModel.send(.toggleFavourite(property: property))
                 } onContactTap: {
-                  print("Tapped contact button")
-                  toastMessage = "Contact tapped"
-                  showToast = true
+                  viewModel.send(.contactTapped)
                 }
               }
             }
             .padding(.vertical, 8)
+          }
+          .refreshable {
+            viewModel.send(.fetchProperties(query: searchText))
+          }
+        }
+      }
+      .toolbar {
+        ToolbarItem(placement: .topBarLeading) {
+          Button {
+            viewModel.send(.filterTapped)
+          } label: {
+            Image(sfSymbol: .sliderHorizontal3)
+              .foregroundColor(.gray)
+          }
+        }
+
+        ToolbarItem(placement: .topBarLeading) {
+          Button {
+            viewModel.send(.sortTapped)
+          } label: {
+            Image(sfSymbol: .arrowUpArrowDown)
+              .foregroundColor(.gray)
+          }
+        }
+
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+            viewModel.send(.toggleFavouritesFilter)
+          } label: {
+            HStack(spacing: 4) {
+              Image(sfSymbol: viewModel.showFavouritesOnly ? .heartfill : .heart)
+                .foregroundColor(viewModel.showFavouritesOnly ? .darkBlue : .gray)
+              Text("Favourites")
+                .font(.subheadline)
+                .foregroundColor(viewModel.showFavouritesOnly ? .darkBlue : .gray)
+            }
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
           }
         }
       }
@@ -84,7 +87,7 @@ struct SearchView: View {
     .task {
       viewModel.send(.fetchProperties(query: searchText))
     }
-    .toast(message: toastMessage, isShowing: $showToast)
+    .toast(message: viewModel.toastMessage, isShowing: $viewModel.showToast)
   }
 }
 

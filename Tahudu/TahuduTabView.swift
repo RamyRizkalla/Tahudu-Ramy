@@ -7,6 +7,7 @@ import SwiftUI
 
 struct TahuduTabView: View {
     @State private var selectedTab = Tabs.search.rawValue
+    @StateObject private var networkMonitor = NetworkMonitor()
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -22,6 +23,7 @@ struct TahuduTabView: View {
                 }
                 .edgesIgnoringSafeArea(.all)
         }
+        .offlineBanner(isShowing: !networkMonitor.isConnected)
     }
 }
 

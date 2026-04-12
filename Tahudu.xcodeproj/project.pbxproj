@@ -51,6 +51,11 @@
 		2D86810A2F8BE4A80068E2B5 /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681092F8BE4A80068E2B5 /* UITableViewExt.swift */; };
 		2D8681122F8C2ECB0068E2B5 /* EndpointExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681112F8C2ECB0068E2B5 /* EndpointExt.swift */; };
 		2D8681172F8C38C10068E2B5 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681162F8C38C10068E2B5 /* EmptyStateView.swift */; };
+		2D8681192F8C41620068E2B5 /* NumberFormatterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681182F8C41620068E2B5 /* NumberFormatterExt.swift */; };
+		2D86811B2F8C60510068E2B5 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D86811A2F8C60510068E2B5 /* StringExt.swift */; };
+		2D86811D2F8C66260068E2B5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D86811C2F8C66260068E2B5 /* NetworkMonitor.swift */; };
+		2D86811F2F8C663C0068E2B5 /* OfflineBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D86811E2F8C663C0068E2B5 /* OfflineBannerView.swift */; };
+		2D8681212F8C750B0068E2B5 /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8681202F8C750A0068E2B5 /* ViewExt.swift */; };
 		2DFCB70E2F8AD02900B78EA1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFCB70D2F8AD02900B78EA1 /* TagView.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +117,11 @@
 		2D8681092F8BE4A80068E2B5 /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
 		2D8681112F8C2ECB0068E2B5 /* EndpointExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointExt.swift; sourceTree = "<group>"; };
 		2D8681162F8C38C10068E2B5 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		2D8681182F8C41620068E2B5 /* NumberFormatterExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterExt.swift; sourceTree = "<group>"; };
+		2D86811A2F8C60510068E2B5 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		2D86811C2F8C66260068E2B5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		2D86811E2F8C663C0068E2B5 /* OfflineBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineBannerView.swift; sourceTree = "<group>"; };
+		2D8681202F8C750A0068E2B5 /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		2DFCB70D2F8AD02900B78EA1 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,7 +246,6 @@
 		1F479BDA26EF1AB100F863AC /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				2D8681162F8C38C10068E2B5 /* EmptyStateView.swift */,
 				2D8681152F8C30510068E2B5 /* Components */,
 				2D348A202F8A7CD400ADA472 /* SearchViewModel.swift */,
 				1F479BDC26EF1AD400F863AC /* SearchView.swift */,
@@ -345,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				2D8680FD2F8BCB5D0068E2B5 /* ToastView.swift */,
+				2D86811E2F8C663C0068E2B5 /* OfflineBannerView.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -378,6 +388,7 @@
 		2D86810D2F8C2B740068E2B5 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				2D8681202F8C750A0068E2B5 /* ViewExt.swift */,
 				2D348A0A2F89B67900ADA472 /* FontExt.swift */,
 				1F566C05272963EE000D4E93 /* Image.swift */,
 			);
@@ -387,7 +398,9 @@
 		2D86810E2F8C2BA30068E2B5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				2D8681182F8C41620068E2B5 /* NumberFormatterExt.swift */,
 				2D348A3E2F8AAA6700ADA472 /* DateExt.swift */,
+				2D86811A2F8C60510068E2B5 /* StringExt.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -405,6 +418,7 @@
 			children = (
 				2D8681132F8C2FD00068E2B5 /* Persistence */,
 				2D348A262F8A7F9000ADA472 /* NetworkWrapper */,
+				2D86811C2F8C66260068E2B5 /* NetworkMonitor.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -420,6 +434,7 @@
 		2D8681152F8C30510068E2B5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2D8681162F8C38C10068E2B5 /* EmptyStateView.swift */,
 				2D348A042F89B2F200ADA472 /* CardView.swift */,
 				2D348A052F89B2F200ADA472 /* CarouselView.swift */,
 			);
@@ -537,15 +552,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8681192F8C41620068E2B5 /* NumberFormatterExt.swift in Sources */,
 				2D348A392F8AA19400ADA472 /* FavouriteProperty.swift in Sources */,
 				1F479BDD26EF1AD400F863AC /* SearchView.swift in Sources */,
 				2D8681172F8C38C10068E2B5 /* EmptyStateView.swift in Sources */,
 				2D348A322F8A9E5400ADA472 /* PropertyRepository.swift in Sources */,
 				1F479BD726EF1A0200F863AC /* Colors.swift in Sources */,
 				2D8681062F8BDF350068E2B5 /* SettingsCell.swift in Sources */,
+				2D8681212F8C750B0068E2B5 /* ViewExt.swift in Sources */,
 				2D8681082F8BE3900068E2B5 /* SettingsViewModel.swift in Sources */,
 				2D348A032F89B2D700ADA472 /* Property.swift in Sources */,
 				2D348A072F89B2F200ADA472 /* TagsView.swift in Sources */,
+				2D86811B2F8C60510068E2B5 /* StringExt.swift in Sources */,
 				2D8681122F8C2ECB0068E2B5 /* EndpointExt.swift in Sources */,
 				2D348A082F89B2F200ADA472 /* CardView.swift in Sources */,
 				2D348A092F89B2F200ADA472 /* CarouselView.swift in Sources */,
@@ -565,6 +583,7 @@
 				2D348A1E2F8A7C2D00ADA472 /* ListingsResponse.swift in Sources */,
 				1F479BD926EF1A9600F863AC /* TahuduTabView.swift in Sources */,
 				2D348A172F8A675C00ADA472 /* RequestBuilder.swift in Sources */,
+				2D86811D2F8C66260068E2B5 /* NetworkMonitor.swift in Sources */,
 				2D348A3B2F8AA30F00ADA472 /* Tahudu.xcdatamodeld in Sources */,
 				2D348A252F8A7F1400ADA472 /* APIProvider.swift in Sources */,
 				2D348A282F8A84FC00ADA472 /* APIToDomainConverter.swift in Sources */,
@@ -572,6 +591,7 @@
 				2D86810A2F8BE4A80068E2B5 /* UITableViewExt.swift in Sources */,
 				2D348A1B2F8A675C00ADA472 /* PropertyEndpoint.swift in Sources */,
 				2D348A1C2F8A675C00ADA472 /* Endpoint.swift in Sources */,
+				2D86811F2F8C663C0068E2B5 /* OfflineBannerView.swift in Sources */,
 				2D348A212F8A7CD400ADA472 /* SearchViewModel.swift in Sources */,
 				1F479BEB26EF333800F863AC /* ContactButton.swift in Sources */,
 				1F479BEE26F06FDD00F863AC /* SettingsViewController.swift in Sources */,
@@ -725,7 +745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tahudu/Preview Content\"";
-				DEVELOPMENT_TEAM = ZC869D3D9T;
+				DEVELOPMENT_TEAM = H78F7NL94V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -755,7 +775,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tahudu/Preview Content\"";
-				DEVELOPMENT_TEAM = ZC869D3D9T;
+				DEVELOPMENT_TEAM = H78F7NL94V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
