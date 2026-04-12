@@ -1,6 +1,12 @@
 import Foundation
 
+/// Builds URLRequest instances from Endpoint definitions.
 struct RequestBuilder {
+  
+  /// Constructs a URLRequest from an Endpoint protocol definition.
+  /// - Parameter endpoint: The endpoint definition to build the request from.
+  /// - Returns: A configured URLRequest ready for execution.
+  /// - Throws: An error if URL construction or encoding fails.
   static func build(from endpoint: Endpoint) throws -> URLRequest {
     let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
     var request = URLRequest(url: url)

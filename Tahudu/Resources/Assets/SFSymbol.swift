@@ -1,6 +1,8 @@
 import SwiftUI
 import UIKit
 
+/// A type-safe enum wrapper for SF Symbols used throughout the application.
+/// Each case corresponds to a specific SF Symbol name from Apple's SF Symbols library.
 public enum SFSymbol: String {
   case heart = "heart"
   case heartfill = "heart.fill"
@@ -21,12 +23,18 @@ public enum SFSymbol: String {
 }
 
 public extension Image {
+  /// Initializes an Image with an SF Symbol.
+  /// - Parameter sfSymbol: The SFSymbol enum case to use for the image.
   init(sfSymbol: SFSymbol) {
     self.init(systemName: sfSymbol.rawValue)
   }
 }
 
 public extension UIImage {
+  /// Initializes a UIImage with an SF Symbol and optional configuration.
+  /// - Parameters:
+  ///   - sfSymbol: The SFSymbol enum case to use for the image.
+  ///   - configuration: The configuration to use for the symbol image (e.g., weight, scale).
   convenience init?(sfSymbol: SFSymbol, withConfiguration configuration: Configuration) {
     self.init(systemName: sfSymbol.rawValue, withConfiguration: configuration)
   }

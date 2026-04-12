@@ -7,11 +7,11 @@ protocol PropertyRepositoryProtocol {
 }
 
 final class PropertyRepository: PropertyRepositoryProtocol {
-    private let provider: APIProvider<PropertyAPI>
+    private let provider: APIProvider<PropertyEndpoint>
     private let favouritesStore: FavouritesStoreProtocol
 
     init(
-        provider: APIProvider<PropertyAPI> = APIProvider(stubBehavior: .immediate),
+        provider: APIProvider<PropertyEndpoint> = APIProvider(stubBehavior: .immediate),
         favouritesStore: FavouritesStoreProtocol = FavouritesStore()
     ) {
         self.provider = provider
@@ -19,7 +19,7 @@ final class PropertyRepository: PropertyRepositoryProtocol {
     }
 
     func fetchProperties() async throws -> [Property] {
-        let response: SearchResponse = try await provider.request(.listings)
+        let response: PropertiesResponse = try await provider.request(.listings)
         var properties = response.domainModel
         let favouriteIDs = try favouritesStore.fetchFavouriteIDs()
 
