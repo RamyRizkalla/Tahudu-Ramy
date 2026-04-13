@@ -2,8 +2,8 @@ import Foundation
 
 protocol PropertyRepositoryProtocol {
   func fetchProperties() async throws -> [Property]
-  func toggleFavourite(for propertyID: String) throws -> Bool
-  func favouriteIDs() throws -> Set<String>
+  func toggleFavourite(for propertyID: String) async throws -> Bool
+  func favouriteIDs() async throws -> Set<String>
 }
 
 final class PropertyRepository: PropertyRepositoryProtocol {
@@ -44,11 +44,15 @@ final class PropertyRepository: PropertyRepositoryProtocol {
   }
   
   /// Toggles the favourite and returns the new state.
-  func toggleFavourite(for propertyID: String) throws -> Bool {
-    try favouritesStore.toggleFavourite(id: propertyID)
+  func toggleFavourite(for propertyID: String) async throws -> Bool {
+    try await Task {
+      try favouritesStore.toggleFavourite(id: propertyID)
+    }.value
   }
   
-  func favouriteIDs() throws -> Set<String> {
-    try favouritesStore.fetchFavouriteIDs()
+  func favouriteIDs() async throws -> Set<String> {
+    try await Task.detached {
+      try self.favouritesStore.fetchFavouriteIDs()
+    }.value
   }
 }

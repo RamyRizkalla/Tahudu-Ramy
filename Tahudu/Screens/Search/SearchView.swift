@@ -12,6 +12,15 @@ struct SearchView: View {
           symbol: .magnifyingglass,
           text: $searchText
         )
+        .submitLabel(.search)
+        .onSubmit {
+          viewModel.send(.searchSubmitted(query: searchText))
+        }
+        .onChange(of: searchText) { oldValue, newValue in
+          if newValue.isEmpty {
+            viewModel.send(.searchCleared)
+          }
+        }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
         
@@ -36,8 +45,8 @@ struct SearchView: View {
               ForEach(viewModel.displayedProperties) { property in
                 CardView(property: property) {
                   viewModel.send(.toggleFavourite(property: property))
-                } onContactTap: {
-                  viewModel.send(.contactTapped)
+                } onContactTap: { contactType in
+                  viewModel.send(.contactTapped(contactType: contactType))
                 }
               }
             }
@@ -57,7 +66,7 @@ struct SearchView: View {
               .foregroundColor(.gray)
           }
         }
-
+        
         ToolbarItem(placement: .topBarLeading) {
           Button {
             viewModel.send(.sortTapped)
@@ -66,7 +75,7 @@ struct SearchView: View {
               .foregroundColor(.gray)
           }
         }
-
+        
         ToolbarItem(placement: .topBarTrailing) {
           Button {
             viewModel.send(.toggleFavouritesFilter)
@@ -91,8 +100,6 @@ struct SearchView: View {
   }
 }
 
-struct SearchView_Previews: PreviewProvider {
-  static var previews: some View {
-    SearchView()
-  }
+#Preview {
+  SearchView()
 }

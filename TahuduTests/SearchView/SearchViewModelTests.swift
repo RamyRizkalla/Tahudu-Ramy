@@ -57,13 +57,14 @@ struct SearchViewModelTests {
     
     // Pre-populate properties
     vm.send(.fetchProperties(query: ""))
-    try? await Task.sleep(nanoseconds: 100_000_000)
+    try? await Task.sleep(seconds: 0.1)
     
     let target = vm.properties[0]
     #expect(target.isFavorited == false)
     
     vm.send(.toggleFavourite(property: target))
-    
+    try? await Task.sleep(seconds: 0.1)
+
     #expect(vm.properties[0].isFavorited == true)
     #expect(vm.errorMessage == nil)
   }
@@ -80,7 +81,8 @@ struct SearchViewModelTests {
     mock.toggleError = TestError.generic
     let target = vm.properties[0]
     vm.send(.toggleFavourite(property: target))
-    
+    try? await Task.sleep(seconds: 0.1)
+
     #expect(vm.errorMessage != nil)
     #expect(vm.properties[0].isFavorited == false)
   }
@@ -143,6 +145,67 @@ struct SearchViewModelTests {
     vm.send(.clearError)
     #expect(vm.errorMessage == nil)
   }
+  
+  // MARK: searchSubmitted
+  
+  @Test("searchSubmitted filters properties by query")
+  func searchSubmittedFilters() async {
+    let mock = MockPropertyRepository()
+    mock.stubbedProperties = Property.samples
+    let vm = SearchViewModel(repository: mock)
+    
+    vm.send(.fetchProperties(query: ""))
+    try? await Task.sleep(nanoseconds: 100_000_000)
+    
+    vm.send(.searchSubmitted(query: "Apartment"))
+    #expect(vm.displayedProperties.count == 1)
+    #expect(vm.displayedProperties.first?.type == "Apartment")
+  }
+  
+  @Test("searchCleared resets search filtering")
+  func searchClearedResets() async {
+    let mock = MockPropertyRepository()
+    mock.stubbedProperties = Property.samples
+    let vm = SearchViewModel(repository: mock)
+    
+    vm.send(.fetchProperties(query: ""))
+    try? await Task.sleep(nanoseconds: 100_000_000)
+    
+    vm.send(.searchSubmitted(query: "Apartment"))
+    #expect(vm.displayedProperties.count == 1)
+    
+    vm.send(.searchCleared)
+    #expect(vm.displayedProperties.count == 2)
+  }
+  
+  @Test("searchSubmitted with no matches returns empty")
+  func searchSubmittedNoMatches() async {
+    let mock = MockPropertyRepository()
+    mock.stubbedProperties = Property.samples
+    let vm = SearchViewModel(repository: mock)
+    
+    vm.send(.fetchProperties(query: ""))
+    try? await Task.sleep(nanoseconds: 100_000_000)
+    
+    vm.send(.searchSubmitted(query: "Penthouse"))
+    #expect(vm.displayedProperties.isEmpty)
+  }
+  
+  @Test("searchSubmitted with empty query returns all properties")
+  func searchSubmittedEmptyQuery() async {
+    let mock = MockPropertyRepository()
+    mock.stubbedProperties = Property.samples
+    let vm = SearchViewModel(repository: mock)
+    
+    vm.send(.fetchProperties(query: ""))
+    try? await Task.sleep(nanoseconds: 100_000_000)
+    
+    vm.send(.searchSubmitted(query: "Apartment"))
+    #expect(vm.displayedProperties.count == 1)
+    
+    vm.send(.searchSubmitted(query: ""))
+    #expect(vm.displayedProperties.count == 2)
+  }
 }
 
 private extension Property {
@@ -151,26 +214,26 @@ private extension Property {
       Property(
         id: "1",
         images: [],
-        isVerified: true,
         isFavorited: false,
         type: "Apartment",
         tags: [],
         price: 100,
         currency: "AED",
         bedrooms: "Studio",
+        location: "Dubai Marina",
         publishedDate: Date(),
         contactTypes: [.phone]
       ),
       Property(
         id: "2",
         images: [],
-        isVerified: false,
         isFavorited: true,
         type: "Villa",
         tags: [],
         price: 200,
         currency: "AED",
         bedrooms: "2 Bedrooms",
+        location: "Palm Jumeirah",
         publishedDate: Date(),
         contactTypes: [.email]
       )

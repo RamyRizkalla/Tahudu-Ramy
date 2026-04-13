@@ -3,7 +3,7 @@ import SwiftUI
 struct CardView: View {
   let property: Property
   let onFavouriteToggle: () -> Void
-  let onContactTap: () -> Void
+  let onContactTap: (ContactType) -> Void
   
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
@@ -75,7 +75,7 @@ struct CardView: View {
           HStack(spacing: 8) {
             ForEach(property.contactTypes, id: \.self) { type in
               ContactButton(type) {
-                onContactTap()
+                onContactTap(type)
               }
             }
           }
@@ -85,7 +85,7 @@ struct CardView: View {
           view.padding(.bottom, 8)
         }
 
-        if let lastContactedDate = property.lastContactedDate {
+        if let lastContactedDate = property.lastContactedDate?.shortDateString {
           HStack(spacing: 6) {
             Image(sfSymbol: .phoneFill)
               .font(.caption)
@@ -108,10 +108,12 @@ struct CardView: View {
   }
 }
 
+#if DEBUG
 #Preview(traits: .sizeThatFitsLayout) {
   CardView(
     property: Property.sampleData[0],
     onFavouriteToggle: {},
-    onContactTap: {}
+    onContactTap: { _ in }
   )
 }
+#endif

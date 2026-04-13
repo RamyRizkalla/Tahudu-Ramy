@@ -13,7 +13,7 @@ class APIProvider<E: Endpoint> {
   ///   - stubBehavior: The stub behavior for testing. Defaults to `.never`.
   init(
     session: URLSession = .shared,
-    decoder: JSONDecoder = JSONDecoder(),
+    decoder: JSONDecoder = .default,
     stubBehavior: StubBehavior = .never
   ) {
     self.session = session

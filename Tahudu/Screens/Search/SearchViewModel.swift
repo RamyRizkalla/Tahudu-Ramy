@@ -4,11 +4,13 @@ import Foundation
 class SearchViewModel: ObservableObject {
   enum Action {
     case fetchProperties(query: String)
+    case searchSubmitted(query: String)
+    case searchCleared
     case toggleFavourite(property: Property)
     case toggleFavouritesFilter
     case filterTapped
     case sortTapped
-    case contactTapped
+    case contactTapped(contactType: ContactType)
     case clearError
   }
   
@@ -18,9 +20,12 @@ class SearchViewModel: ObservableObject {
   @Published var showFavouritesOnly: Bool = false
   @Published var toastMessage: String = ""
   @Published var showToast: Bool = false
+  @Published var searchQuery: String = ""
 
   var displayedProperties: [Property] {
-    showFavouritesOnly ? properties.filter { $0.isFavorited } : properties
+    let filtered = showFavouritesOnly ? properties.filter { $0.isFavorited } : properties
+    guard !searchQuery.isEmpty else { return filtered }
+    return filtered.filter { $0.matches(searchQuery) }
   }
 
   private let repository: PropertyRepositoryProtocol
@@ -35,16 +40,22 @@ class SearchViewModel: ObservableObject {
       Task {
         await fetchProperties(query: query)
       }
+    case .searchSubmitted(let query):
+      searchQuery = query
+    case .searchCleared:
+      searchQuery = ""
     case .toggleFavourite(let property):
-      toggleFavourite(for: property)
+      Task {
+        await toggleFavourite(for: property)
+      }
     case .toggleFavouritesFilter:
       toggleFavouritesFilter()
     case .filterTapped:
       filterTapped()
     case .sortTapped:
       sortTapped()
-    case .contactTapped:
-      contactTapped()
+    case .contactTapped(let contactType):
+      contactTapped(contactType: contactType)
     case .clearError:
       errorMessage = nil
     }
@@ -65,9 +76,9 @@ extension SearchViewModel {
     isLoading = false
   }
 
-  private func toggleFavourite(for property: Property) {
+  private func toggleFavourite(for property: Property) async {
     do {
-      let newState = try repository.toggleFavourite(for: property.id)
+      let newState = try await repository.toggleFavourite(for: property.id)
       if let index = properties.firstIndex(where: { $0.id == property.id }) {
         properties[index].isFavorited = newState
       }
@@ -81,20 +92,20 @@ extension SearchViewModel {
   }
 
   private func filterTapped() {
-    print("Filter tapped")
-    toastMessage = "Filter tapped"
-    showToast = true
+    let text = "Filter tapped"
+    print(text)
+    toastMessage = text
   }
 
   private func sortTapped() {
-    print("Sort tapped")
-    toastMessage = "Sort tapped"
-    showToast = true
+    let text = "Sort tapped"
+    print(text)
+    toastMessage = text
   }
 
-  private func contactTapped() {
-    print("Contact tapped")
-    toastMessage = "Contact tapped"
-    showToast = true
+  private func contactTapped(contactType: ContactType) {
+    let text = "Contact tapped: \(contactType.rawValue)"
+    print(text)
+    toastMessage = text
   }
 }

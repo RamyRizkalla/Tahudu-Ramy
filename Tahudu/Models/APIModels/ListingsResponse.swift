@@ -12,8 +12,8 @@ struct PropertiesResponse: Codable {
     let bedrooms: Int?
     let bathrooms: Int
     let areaSqft: Int
-    let publishedAt: String
-    let lastContactedAt: String?
+    let publishedAt: Date
+    let lastContactedAt: Date?
     let tags: [String]
     let images: [String]
     let contactOptions: [String]
@@ -30,11 +30,9 @@ extension PropertiesResponse: APIToDomainConvertable {
 
 extension PropertiesResponse.Listing: APIToDomainConvertable {
   var domainModel: Property {
-    let parsedDate = ISO8601DateFormatter().date(from: publishedAt) ?? Date()
     return Property(
       id: id,
       images: images,
-      isVerified: tags.contains("verified"),
       isFavorited: false,
       type: type,
       deliveryYear: deliveryYear,
@@ -42,7 +40,8 @@ extension PropertiesResponse.Listing: APIToDomainConvertable {
       price: price,
       currency: currency,
       bedrooms: bedrooms.map { String($0) } ?? "Studio",
-      publishedDate: parsedDate,
+      location: location,
+      publishedDate: publishedAt,
       lastContactedDate: lastContactedAt,
       contactTypes: contactOptions.compactMap { ContactType(rawValue: $0) }
     )
